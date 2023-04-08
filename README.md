@@ -1,6 +1,6 @@
 # container-images
 
-Welcome to my container images repo. If looking for a container start by [browsing the container packages](https://github.com/Doonga?tab=packages&repo_name=containers).
+Welcome to my container images repo. If looking for a container start by [browsing the container packages](https://github.com/doonga?tab=packages&repo_name=containers).
 
 ## Credits
 
@@ -24,9 +24,9 @@ I do take a similar approach but instead of appending a `-ls69` or `-r420` prefi
 
 | Container                                       | Immutable |
 |-------------------------------------------------|-----------|
-| `ghcr.io/Doonga/getmail:rolling`                 | ❌        |
-| `ghcr.io/Doonga/getmail:6.18.10`                 | ❌        |
-| `ghcr.io/Doonga/getmail:rolling@sha256:8053...`  | ✅        |
-| `ghcr.io/Doonga/getmail:6.18.10@sha256:8053...`  | ✅        |
+| `ghcr.io/doonga/getmail:rolling`                 | ❌        |
+| `ghcr.io/doonga/getmail:6.18.10`                 | ❌        |
+| `ghcr.io/doonga/getmail:rolling@sha256:8053...`  | ✅        |
+| `ghcr.io/doonga/getmail:6.18.10@sha256:8053...`  | ✅        |
 
 _If pinning an image to the sha256 digest, tools like [Renovate](https://github.com/renovatebot/renovate) support updating the container on a digest or application version change._
