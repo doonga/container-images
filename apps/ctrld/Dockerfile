@@ -6,9 +6,9 @@ ARG TARGETOS
 
 ARG VERSION
 
-LABEL dev.greyrock.image.target_platform=$TARGETPLATFORM
-LABEL dev.greyrock.image.target_architecture=$TARGETARCH
-LABEL dev.greyrock.image.target_os=$TARGETOS
+LABEL dev.doonga.image.target_platform=$TARGETPLATFORM
+LABEL dev.doonga.image.target_architecture=$TARGETARCH
+LABEL dev.doonga.image.target_os=$TARGETOS
 LABEL org.opencontainers.image.source="https://github.com/Control-D-Inc/ctrld"
 
 ENV CTRLD_CONFIG_FILE "/config/ctrld.toml"
