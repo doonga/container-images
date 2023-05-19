@@ -23,6 +23,7 @@ RUN \
     curl -L \
         "https://github.com/Control-D-Inc/ctrld/releases/download/v${VERSION}/ctrld_${VERSION}_linux_${ARCH}.tar.gz" \
         | tar -xz --strip-components=2 -C /app/ \
+    && mkdir -p /etc/controld \
     && mkdir -p /config \
     && chown -R root:root /app \
     && chmod -R 755 /app \
