@@ -24,10 +24,9 @@ RUN \
     && \
     curl -L \
         "https://github.com/pdf/zfs_exporter/releases/download/v${VERSION}/zfs_exporter-${VERSION}.linux-amd64.tar.gz" \
-        | tar -xz --strip-components=1 -C /temp/ \
-    && cp /temp/zfs_exporter /bin/
+        | tar -xz --strip-components=1 -C /app/
 
 USER nobody
 
 EXPOSE 9134
-ENTRYPOINT  [ "/bin/zfs_exporter" ]
+CMD ["/entrypoint.sh"]
