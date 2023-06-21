@@ -29,5 +29,5 @@ RUN \
 USER nobody
 
 EXPOSE 9134
-COPY ./apps/ctrld/entrypoint.sh /entrypoint.sh
+COPY ./apps/zfs_exporter/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
