@@ -12,6 +12,7 @@ LABEL dev.doonga.image.target_os=$TARGETOS
 LABEL org.opencontainers.image.source="https://github.com/pdf/zfs_exporter/"
 
 ENV PATH="${PATH}:/sbin"
+ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
 
@@ -25,6 +26,8 @@ RUN \
     curl -L \
         "https://github.com/pdf/zfs_exporter/releases/download/v${VERSION}/zfs_exporter-${VERSION}.linux-amd64.tar.gz" \
         | tar -xz --strip-components=1 -C /app/
+
+RUN apt update && apt install -y zfsutils-linux && rm -rf /var/lib/apt/lists/*
 
 USER nobody
 
