@@ -30,5 +30,5 @@ RUN \
     && chown -R kah:kah /config
 
 USER kah
-COPY ./apps/ctrld/entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]

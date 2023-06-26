@@ -32,5 +32,5 @@ RUN apt update && apt install -y zfsutils-linux && rm -rf /var/lib/apt/lists/*
 USER nobody
 
 EXPOSE 9134
-COPY ./apps/zfs_exporter/entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
