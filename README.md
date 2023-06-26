@@ -41,12 +41,8 @@ Application Images are all built from the customer base images below, and will l
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[gatus]() | stable | ghcr.io/doonga/gatus |
-[calibre-web]() | stable | ghcr.io/doonga/calibre-web |
-[kepubify]() | stable | ghcr.io/doonga/kepubify |
-[radicale]() | stable | ghcr.io/doonga/radicale |
-[mdbook]() | stable | ghcr.io/doonga/mdbook |
-[getmail]() | stable | ghcr.io/doonga/getmail |
+[ctrld]() | stable | ghcr.io/doonga/ctrld |
+[zfs_exporter](https://github.com/doonga/container-images/pkgs/container/zfs_exporter) | stable | ghcr.io/doonga/zfs_exporter |![2.2.8](https://img.shields.io/badge/2.2.8-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 
 
 ### Base Images
