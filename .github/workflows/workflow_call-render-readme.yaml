@@ -51,5 +51,5 @@ jobs:
           file_pattern: "README.md"
           commit_message: Render README.md
           commit_user_name: "greyrock-bot[bot]"
-          commit_user_email: 1583719+greyrock-bot[bot]@users.noreply.github.com
-          commit_author: greyrock-bot <1583719+greyrock-bot[bot]@users.noreply.github.com>
+          commit_user_email: 112729691+greyrock-bot[bot]@users.noreply.github.com
+          commit_author: greyrock-bot <112729691+greyrock-bot[bot]@users.noreply.github.com>
