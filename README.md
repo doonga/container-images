@@ -41,7 +41,8 @@ Application Images are all built from the customer base images below, and will l
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[zfs_exporter](https://github.com/doonga/container-images/pkgs/container/zfs_exporter) | stable | ghcr.io/doonga/zfs_exporter |![2.2.8](https://img.shields.io/badge/2.2.8-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[gatus](https://github.com/doonga/container-images/pkgs/container/gatus) | stable | ghcr.io/doonga/gatus |![5](https://img.shields.io/badge/5-blue?style=flat-square) ![5.5](https://img.shields.io/badge/5.5-blue?style=flat-square) ![5.5.1](https://img.shields.io/badge/5.5.1-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[paperless](https://github.com/doonga/container-images/pkgs/container/paperless) | stable | ghcr.io/doonga/paperless |![1.16.5](https://img.shields.io/badge/1.16.5-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 
 
 ### Base Images
