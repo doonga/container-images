@@ -3,9 +3,9 @@
 import requests
 import json
 
-# Get the latest version of zfs_exporter
+# Get the latest version of Gatus
 
-URL = "https://api.github.com/repos/pdf/zfs_exporter/releases/latest"
+URL = "https://api.github.com/repos/TwiN/gatus/releases/latest"
 
 def get_latest(channel):
     r = requests.get(URL)
