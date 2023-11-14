@@ -41,7 +41,7 @@ Application Images are all built from the customer base images below, and will l
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[gatus](https://github.com/doonga/container-images/pkgs/container/gatus) | stable | ghcr.io/doonga/gatus |![5](https://img.shields.io/badge/5-blue?style=flat-square) ![5.6](https://img.shields.io/badge/5.6-blue?style=flat-square) ![5.6.0](https://img.shields.io/badge/5.6.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
+[gatus](https://github.com/doonga/container-images/pkgs/container/gatus) | stable | ghcr.io/doonga/gatus |![5](https://img.shields.io/badge/5-blue?style=flat-square) ![5.7](https://img.shields.io/badge/5.7-blue?style=flat-square) ![5.7.0](https://img.shields.io/badge/5.7.0-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 [paperless-ngx](https://github.com/doonga/container-images/pkgs/container/paperless-ngx) | stable | ghcr.io/doonga/paperless-ngx |![1.17.4](https://img.shields.io/badge/1.17.4-blue?style=flat-square) ![latest](https://img.shields.io/badge/latest-green?style=flat-square)
 
 
