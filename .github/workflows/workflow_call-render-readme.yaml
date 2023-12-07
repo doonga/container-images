@@ -15,23 +15,25 @@ jobs:
   render-readme:
     name: Render README
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Generate Token
-        uses: tibdex/github-app-token@v2
-        id: generate-token
+      - name: "Generate Short Lived OAuth App Token (ghs_*)"
+        uses: actions/create-github-app-token@v1.6.2
+        id: app-token
         with:
           app_id: "${{ secrets.GREYROCK_APP_ID }}"
           private_key: "${{ secrets.GREYROCK_APP_PRIVATE_KEY }}"
 
       - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        uses: actions/checkout@v4
         with:
-          token: ${{ steps.generate-token.outputs.token }}
+          token: "${{ steps.app-token.outputs.token }}"
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: "3.11"
           cache: "pip" # caching pip dependencies
 
       - name: Install Python Requirements
@@ -40,16 +42,17 @@ jobs:
 
       - name: Render README
         env:
-          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+          GITHUB_TOKEN: "${{ steps.app-token.outputs.token }}"
         run: |
           python ./.ci/scripts/render-readme.py
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        id: auto-commit
+      - name: Commit Changes
+        uses: planetscale/ghcommit-action@v0.1.28
         with:
+          commit_message: "chore: regenerate README.md [skip ci]"
+          repo: ${{ github.repository }}
+          branch: main
+          empty: false
           file_pattern: "README.md"
-          commit_message: Render README.md
-          commit_user_name: "greyrock-bot[bot]"
-          commit_user_email: 112729691+greyrock-bot[bot]@users.noreply.github.com
-          commit_author: greyrock-bot <112729691+greyrock-bot[bot]@users.noreply.github.com>
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}

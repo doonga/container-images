@@ -1,22 +1,39 @@
+#!/usr/bin/env python3
 import os
+import json
 import requests
 import yaml
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+# read repository name and repository owner's username from custom env vars, else read from GitHub Actions default env vars
+repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNER'))
+repo_name = os.environ.get('REPO_NAME', os.environ.get('GITHUB_REPOSITORY')) # uses format "owner/repo"
 
 env = Environment(
     loader=FileSystemLoader(".ci/templates"),
     autoescape=select_autoescape()
 )
 
-def load_metadata_file(file_path):
+def load_metadata_file_yaml(file_path):
     with open(file_path, "r") as f:
         return yaml.safe_load(f)
+
+def load_metadata_file_json(file_path):
+    with open(file_path, "r") as f:
+        return json.load(f)
+
+def load_metadata_file(file_path):
+    if file_path.endswith(".json"):
+        return load_metadata_file_json(file_path)
+    elif file_path.endswith(".yaml"):
+        return load_metadata_file_yaml(file_path)
+    return None
 
 # TODO: remove hard-coded repo owner
 def get_latest_image(name):
     r = requests.get(
-        f"https://api.github.com/users/doonga/packages/container/{name}/versions",
+        f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions",
         headers={
             "Accept": "application/vnd.github.v3+json",
             "Authorization": "token " + os.environ["GITHUB_TOKEN"]
@@ -38,7 +55,7 @@ if __name__ == "__main__":
     app_images = []
     for subdir, dirs, files in os.walk("./apps"):
         for file in files:
-            if file != "metadata.yaml":
+            if file != "metadata.yaml" and file != "metadata.json":
                 continue
             meta = load_metadata_file(os.path.join(subdir, file))
             for channel in meta["channels"]:
@@ -54,7 +71,7 @@ if __name__ == "__main__":
                 }
                 gh_data = get_latest_image(name)
                 if gh_data is not None:
-                    image["html_url"] = f"https://github.com/doonga/container-images/pkgs/container/{name}"
+                    image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
                     image["tags"] = sorted(gh_data["metadata"]["container"]["tags"])
                 if meta["base"]:
                     base_images.append(image)
