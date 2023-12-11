@@ -5,7 +5,7 @@ on:
   workflow_call:
     secrets:
       GREYROCK_APP_ID:
-        description: "The ID of the GitHub App"
+        description: "The App ID of the GitHub App"
         required: true
       GREYROCK_APP_PRIVATE_KEY:
         description: "The private key of the GitHub App"
@@ -22,8 +22,8 @@ jobs:
         uses: actions/create-github-app-token@v1.6.2
         id: app-token
         with:
-          app_id: "${{ secrets.GREYROCK_APP_ID }}"
-          private_key: "${{ secrets.GREYROCK_APP_PRIVATE_KEY }}"
+          app-id: "${{ secrets.GREYROCK_APP_ID }}"
+          private-key: "${{ secrets.GREYROCK_APP_PRIVATE_KEY }}"
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,7 +51,7 @@ jobs:
         with:
           commit_message: "chore: regenerate README.md [skip ci]"
           repo: ${{ github.repository }}
-          branch: main
+          branch: ${{ github.head_ref || github.ref_name }}
           empty: false
           file_pattern: "README.md"
         env:
