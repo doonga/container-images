@@ -3,20 +3,6 @@
   extends: [
     "github>doonga/renovate-config",
     "github>doonga/renovate-config:automerge-github-actions",
-    ":automergeDigest",
+    "github>doonga/renovate-config:automerge-docker-digest",
   ],
-  platform: "github",
-  username: "greyrock-bot[bot]",
-  gitAuthor: "greyrock-bot <112729691+greyrock-bot[bot]@users.noreply.github.com>"
-  // regexManagers: [
-  //   {
-  //     description: "Process Dependencies",
-  //     fileMatch: [".*"],
-  //     matchStrings: [
-  //       'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?"(?<currentValue>.*)"\n',
-  //     ],
-  //     datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-  //     versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
-  //   },
-  // ],
 }
