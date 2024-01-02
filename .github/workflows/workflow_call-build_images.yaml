@@ -169,7 +169,7 @@ jobs:
           labels: |-
             org.opencontainers.image.title=${{ matrix.image.name }}
             org.opencontainers.image.url=https://ghcr.io/${{ env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}"
-            org.opencontainers.image.source=https://github.com/doonga/container-images"
+            org.opencontainers.image.source=https://github.com/bjw-s/container-images"
             org.opencontainers.image.version=${{ matrix.image.version }}
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.vendor=${{ env.LOWERCASE_REPO_OWNER }}
@@ -205,7 +205,7 @@ jobs:
         if: ${{ inputs.pushImages }}
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.image.name }}
+          name: ${{ matrix.image.name }}-${{ matrix.image.target_os }}-${{ matrix.image.target_arch }}
           path: /tmp/${{ matrix.image.name }}/*
           if-no-files-found: error
           retention-days: 1
@@ -232,7 +232,8 @@ jobs:
       - name: Download Digests
         uses: actions/download-artifact@v4
         with:
-          name: ${{ matrix.image.name }}
+          pattern: ${{ matrix.image.name }}-*
+          merge-multiple: true
           path: /tmp/${{ matrix.image.name }}
 
       - name: Ensure all platforms were built
@@ -299,7 +300,7 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         if: ${{ always() && inputs.sendNotification == 'true' }}
         with:
-          webhook: ${{ secrets.GREYROCK_DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.BJWS_DISCORD_WEBHOOK }}
           title: ${{ steps.build-failed.outputs.message || steps.build-success.outputs.message }}
           color: ${{ steps.build-failed.outputs.color || steps.build-success.outputs.color }}
           username: GitHub Actions
