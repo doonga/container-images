@@ -5,4 +5,5 @@
     "github>doonga/renovate-config:automerge-github-actions",
     "github>doonga/renovate-config:automerge-docker-digest",
   ],
+  ignorePaths: [".archive/**"],
 }
